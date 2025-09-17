@@ -5,51 +5,34 @@ require_once 'header.php'; // Include the header
 
 <div class="flex justify-between items-center mb-6">
     <h1 class="text-3xl font-bold">Reports & Analytics</h1>
-    <div class="flex items-center space-x-2">
-        <label for="date-range" class="text-sm font-medium">Date Range:</label>
-        <select id="date-range" name="date-range" class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm p-2 text-sm">
-            <option>Last 30 Days</option>
-            <option>Last 3 Months</option>
-            <option>Last 12 Months</option>
-            <option>All Time</option>
-        </select>
-    </div>
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-        <h2 class="text-xl font-bold mb-4">Revenue Over Time</h2>
-        <div class="bg-gray-200 dark:bg-gray-700 rounded-lg h-64 flex items-center justify-center">
-            <p class="text-gray-500">[Bar Chart Placeholder]</p>
+        <h2 class="text-xl font-bold mb-4">Revenue Over Time (Last 6 Months)</h2>
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg h-64 p-4 flex items-end gap-4">
+            <div class="flex-1 h-1/3 bg-blue-300 dark:bg-blue-600 rounded-t-md" title="Mar: £1,200"></div>
+            <div class="flex-1 h-1/2 bg-blue-400 dark:bg-blue-500 rounded-t-md" title="Apr: £2,100"></div>
+            <div class="flex-1 h-3/4 bg-blue-500 dark:bg-blue-400 rounded-t-md" title="May: £3,500"></div>
+            <div class="flex-1 h-2/3 bg-blue-400 dark:bg-blue-500 rounded-t-md" title="Jun: £2,800"></div>
+            <div class="flex-1 h-full bg-blue-500 dark:bg-blue-400 rounded-t-md" title="Jul: £4,800"></div>
+            <div class="flex-1 h-5/6 bg-blue-300 dark:bg-blue-600 rounded-t-md" title="Aug: £4,100"></div>
         </div>
-        <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">A visual representation of monthly invoiced amounts, showing financial trends.</p>
     </div>
 
     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
         <h2 class="text-xl font-bold mb-4">Project Status</h2>
-        <div class="bg-gray-200 dark:bg-gray-700 rounded-lg h-64 flex items-center justify-center">
-            <p class="text-gray-500">[Pie Chart Placeholder]</p>
+        <div class="h-64 flex items-center justify-center">
+            <svg class="w-48 h-48" viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="15.915" fill="none" stroke="#e6e6e6" stroke-width="3"></circle>
+                <circle cx="18" cy="18" r="15.915" fill="none" stroke="#3b82f6" stroke-width="3" stroke-dasharray="50 50" stroke-dashoffset="0"></circle> <circle cx="18" cy="18" r="15.915" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="25 75" stroke-dashoffset="-50"></circle> <circle cx="18" cy="18" r="15.915" fill="none" stroke="#10b981" stroke-width="3" stroke-dasharray="25 75" stroke-dashoffset="-75"></circle> </svg>
         </div>
-        <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">A breakdown of all projects by their current status (e.g., In Progress, Completed, Quote Sent).</p>
-    </div>
-
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-        <h2 class="text-xl font-bold mb-4">Top Clients by Value</h2>
-        <div class="bg-gray-200 dark:bg-gray-700 rounded-lg h-64 flex items-center justify-center">
-            <p class="text-gray-500">[Horizontal Bar Chart Placeholder]</p>
+        <div class="flex justify-center gap-4 text-sm">
+            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-blue-500 mr-2"></span>In Progress</span>
+            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></span>Quote Sent</span>
+            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-green-500 mr-2"></span>Completed</span>
         </div>
-        <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">Identifies the most valuable clients based on total invoiced amounts.</p>
-    </div>
-
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-        <h2 class="text-xl font-bold mb-4">Profitability Analysis</h2>
-        <div class="bg-gray-200 dark:bg-gray-700 rounded-lg h-64 flex items-center justify-center">
-            <p class="text-gray-500">[Data Table Placeholder]</p>
-        </div>
-        <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">Compares project revenue against costs to determine net profitability per project.</p>
     </div>
 
 </div>
-
-<?php require_once 'footer.php'; // Include the footer ?>

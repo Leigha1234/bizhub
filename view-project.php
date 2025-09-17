@@ -2,12 +2,8 @@
 $pageTitle = 'View Project'; // Set the title for this page
 require_once 'header.php'; // Include the header
 
-// Get the project ID from the URL, or set it to null if not provided
 $projectId = $_GET['id'] ?? null;
-
-// Find the project data using the helper function
 $project = getProjectById($mockProjects, $projectId);
-
 ?>
 
 <?php if ($project): ?>
@@ -21,20 +17,21 @@ $project = getProjectById($mockProjects, $projectId);
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
             <h2 class="text-xl font-bold mb-4">Project Details</h2>
-            <div class="space-y-4">
+            <div class="space-y-6">
                 <div>
-                    <h3 class="font-semibold">Status</h3>
-                    <p class="text-gray-600 dark:text-gray-300"><?php echo htmlspecialchars($project['status']); ?></p>
+                    <h3 class="font-semibold text-gray-500 dark:text-gray-400">Status</h3>
+                    <p class="text-gray-800 dark:text-gray-200"><?php echo htmlspecialchars($project['status']); ?></p>
                 </div>
                 <div>
-                    <h3 class="font-semibold">Description</h3>
-                    <p class="text-gray-600 dark:text-gray-300">A full UI/UX overhaul for their new company website, focusing on a modern aesthetic and improved user flow.</p>
+                    <h3 class="font-semibold text-gray-500 dark:text-gray-400">Description</h3>
+                    <p class="text-gray-800 dark:text-gray-200 leading-relaxed"><?php echo htmlspecialchars($project['description']); ?></p>
                 </div>
                  <div>
-                    <h3 class="font-semibold">Files</h3>
-                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
-                        <li>Spring_Brief.pdf</li>
-                        <li>Moodboard.jpg</li>
+                    <h3 class="font-semibold text-gray-500 dark:text-gray-400">Files</h3>
+                    <ul class="list-disc list-inside text-[var(--primary-color)] mt-2">
+                        <?php foreach($project['files'] as $file): ?>
+                            <li><a href="<?php echo $file['url']; ?>" class="hover:underline"><?php echo htmlspecialchars($file['name']); ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -42,14 +39,14 @@ $project = getProjectById($mockProjects, $projectId);
 
         <div class="lg:col-span-1 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
              <h2 class="text-xl font-bold mb-4">Financials</h2>
-             <div class="space-y-4">
+             <div class="space-y-6">
                 <div>
-                    <h3 class="font-semibold">Project Value</h3>
-                    <p class="text-gray-600 dark:text-gray-300">£<?php echo number_format($project['value'], 2); ?></p>
+                    <h3 class="font-semibold text-gray-500 dark:text-gray-400">Project Value</h3>
+                    <p class="text-gray-800 dark:text-gray-200">£<?php echo number_format($project['value'], 2); ?></p>
                 </div>
                 <div>
-                    <h3 class="font-semibold">Due Date</h3>
-                    <p class="text-gray-600 dark:text-gray-300"><?php echo date("F d, Y", strtotime($project['date'])); ?></p>
+                    <h3 class="font-semibold text-gray-500 dark:text-gray-400">Due Date</h3>
+                    <p class="text-gray-800 dark:text-gray-200"><?php echo date("F d, Y", strtotime($project['date'])); ?></p>
                 </div>
              </div>
         </div>
@@ -67,4 +64,4 @@ $project = getProjectById($mockProjects, $projectId);
 
 <?php endif; ?>
 
-<?php require_once 'footer.php'; // Include the footer ?>
+<?php require_once 'footer.php'; ?>

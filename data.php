@@ -44,12 +44,32 @@ $mockContacts = [
 // Mock data for projects
 $mockProjects = [
     [
-        'id' => 'p1', 'title' => 'Spring Lookbook', 'contactId' => 'c1', 'status' => 'In Progress',
-        'value' => 3000, 'currency' => 'GBP', 'date' => '2025-09-15',
+        'id' => 'p1',
+        'title' => 'Spring Lookbook',
+        'contactId' => 'c1',
+        'status' => 'In Progress',
+        'value' => 3000,
+        'currency' => 'GBP',
+        'date' => '2025-09-15',
+        'description' => 'A collaboration to create 5 high-resolution photos and 2 short-form video reels for the upcoming spring clothing line. The focus is on natural lighting and outdoor settings.',
+        'files' => [
+            ['name' => 'Creative_Brief_v2.pdf', 'url' => '#'],
+            ['name' => 'Moodboard_Final.jpg', 'url' => '#'],
+            ['name' => 'Contract_Signed.pdf', 'url' => '#'],
+        ],
     ],
     [
-        'id' => 'p2', 'title' => 'Website Redesign', 'contactId' => 'c2', 'status' => 'Quote Sent',
-        'value' => 4800, 'currency' => 'GBP', 'date' => '2025-08-22',
+        'id' => 'p2',
+        'title' => 'Website Redesign',
+        'contactId' => 'c2',
+        'status' => 'Quote Sent',
+        'value' => 4800,
+        'currency' => 'GBP',
+        'date' => '2025-08-22',
+        'description' => 'A full UI/UX overhaul for the main corporate website. The project includes wireframing, mockups, and front-end development to improve user flow and modernize the aesthetic.',
+        'files' => [
+            ['name' => 'Website_Quote_v1.pdf', 'url' => '#'],
+        ],
     ],
 ];
 
@@ -66,6 +86,53 @@ $billingDetails = [
     'accountHolder' => 'Leigha Smith',
     'accountNumber' => '**** **** **** 5678',
     'sortCode' => '11-22-33',
+];
+
+// Mock data for the finances page
+$mockInvoices = [
+    [
+        'id' => 'inv001',
+        'projectId' => 'p1',
+        'contactId' => 'c1',
+        'amount' => 3000,
+        'dueDate' => '2025-09-15',
+        'status' => 'Paid',
+    ],
+    [
+        'id' => 'inv002',
+        'projectId' => 'p2',
+        'contactId' => 'c2',
+        'amount' => 4800,
+        'dueDate' => '2025-08-22',
+        'status' => 'Outstanding',
+    ],
+];
+
+// Mock data for the marketing content planner
+$contentPlanner = [
+    [
+        'date' => '2025-09-01',
+        'platform' => 'Blog',
+        'idea' => '📝 Blog Post: "Fall Fashion Trends"',
+    ],
+    [
+        'date' => '2025-09-03',
+        'platform' => 'Instagram',
+        'idea' => '📸 Instagram Post: "Behind the Scenes"',
+    ],
+    [
+        'date' => '2025-09-05',
+        'platform' => 'Video',
+        'idea' => '📹 Video: "Client Project Showcase"',
+    ],
+];
+
+// Full text for legal document templates
+$defaultTemplates = [
+    'Agreement' => "## Collaboration Agreement\n\nThis Collaboration Agreement is made and entered into between [Your Business Name] and [Client/Partner Name] (the \"Collaborator\").\n\n**Scope of work:**\nThe Collaborator agrees to provide the following services: [List specific deliverables...]\n\n**Compensation:**\nIn exchange for the services, we will provide compensation as follows: [Specify payment...]",
+    'Policy' => "## Privacy Policy\n\n[Your Business Name] (\"we,\" \"us,\" or \"our\") is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and share your personal information.\n\n**Information we collect:**\nWe collect information that you provide to us directly, such as your name, email address, and contact information...",
+    'Form' => "## Media Release Form\n\nI, [Your Name], hereby grant [Your Business Name] permission to use my likeness, image, voice, and/or performance in any media, including but not limited to photographs, video recordings, and audio recordings.\n\nI understand that this material may be used for promotional, educational, or commercial purposes...",
+    'Terms & Conditions' => "## Terms and Conditions\n\nWelcome to [Your Business Name]! By using our services, you agree to comply with and be bound by the following Terms and Conditions.\n\n**Use of our services:**\nYou may use our services for lawful purposes only. You agree not to use our services for any illegal or unauthorized activities...",
 ];
 
 // Helper function to find a contact's name by their ID
@@ -85,7 +152,32 @@ function getProjectById($projects, $id) {
             return $project;
         }
     }
-    return null; // Return null if no project is found
+    return null;
+}
+
+// Helper function to find a contact by its ID
+function getContactById($contacts, $id) {
+    foreach ($contacts as $contact) {
+        if ($contact['id'] === $id) {
+            return $contact;
+        }
+    }
+    return null;
+}
+
+// Helper function to find a project's title by its ID
+function getProjectTitleById($projects, $id) {
+    foreach ($projects as $project) {
+        if ($project['id'] === $id) {
+            return $project['title'];
+        }
+    }
+    return 'N/A';
+}
+
+// Helper function to find a legal document by its array index
+function getDocumentByIndex($documents, $index) {
+    return $documents[$index] ?? null;
 }
 
 // Helper function to get SVG icon code
